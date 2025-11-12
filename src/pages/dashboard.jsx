@@ -62,7 +62,7 @@ export default function Dashboard() {
     <main className='bg-white p-6 rounded-2xl '>
       <div className='relative w-full min-h-[263px] h-[263px] rounded-lg overflow-hidden'>
         <img
-          src='public/infocard.jpg'
+          src='/infocard.jpg'
           alt='Info card'
           className='w-full h-full object-cover'
         />
