@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import React, { useState } from "react";
+import React, { useState } from "react"
 import {
   flexRender,
   getCoreRowModel,
@@ -8,7 +8,7 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table";
+} from "@tanstack/react-table"
 import {
   ChevronDown,
   Filter,
@@ -17,17 +17,17 @@ import {
   FilterXIcon,
   Settings,
   SlidersVertical,
-} from "lucide-react";
+} from "lucide-react"
 
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
+} from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input"
 import {
   Table,
   TableBody,
@@ -35,19 +35,15 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar.jsx";
-import { Progress } from "@/components/ui/progress.jsx";
+} from "@/components/ui/table"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar.jsx"
+import { Progress } from "@/components/ui/progress.jsx"
 import {
   Status,
   StatusIndicator,
   StatusLabel,
-} from "@/components/ui/shadcn-io/status/index.jsx";
-import { cn } from "@/lib/utils.js";
+} from "@/components/ui/shadcn-io/status/index.jsx"
+import { cn } from "@/lib/utils.js"
 
 // ==== ДАННЫЕ ====
 
@@ -164,7 +160,7 @@ const data = [
     team: "Marketing",
     completion: "50%",
   },
-];
+]
 
 // ==== КОЛОНКИ ====
 
@@ -186,15 +182,15 @@ export const columns = [
     accessorKey: "companies",
     header: "Companies",
     cell: ({ row }) => {
-      const logo = row.original.companiesLogos;
-      const name = row.getValue("companies");
+      const logo = row.original.companiesLogos
+      const name = row.getValue("companies")
 
       return (
         <div className='flex items-center gap-2 text-sm font-medium  w-[200px]'>
           <img src={logo} alt={name} className='w-5 h-5 object-contain' />
           <span className='capitalize'>{name}</span>
         </div>
-      );
+      )
     },
   },
 
@@ -202,7 +198,7 @@ export const columns = [
     accessorKey: "members",
     header: "Members",
     cell: ({ row }) => {
-      const members = row.getValue("members") || [];
+      const members = row.getValue("members") || []
       return (
         <div className='flex justify-between overflow-hidden gap-0 -space-x-20 w-[87px]'>
           {members.map((src, i) => (
@@ -214,7 +210,7 @@ export const columns = [
             </div>
           ))}
         </div>
-      );
+      )
     },
   },
   {
@@ -230,7 +226,7 @@ export const columns = [
     accessorKey: "team",
     header: "Team",
     cell: ({ row }) => (
-      <div className='capitalize w-fit block  text-xs text-gray-950 geist-500 px-2 py-1 border border-gray-200 rounded-sm'>
+      <div className='capitalize w-fit block  text-xs text-gray-950 px-2 py-1 border border-gray-200 rounded-sm'>
         {row.getValue("team")}
       </div>
     ),
@@ -239,26 +235,26 @@ export const columns = [
     accessorKey: "completion",
     header: "Completion",
     cell: ({ row }) => (
-      <div className='flex items-center gap-2 text-gray-500 text-xs geist-500 w-[200px]'>
+      <div className='flex items-center gap-2 text-gray-500 text-xs w-[200px]'>
         {row.getValue("completion")}
         <Progress value={50} />
       </div>
     ),
   },
-];
+]
 
 // ==== ОСНОВНОЙ КОМПОНЕНТ ====
 
 export function DataTableDemo() {
-  const [sorting, setSorting] = useState([]);
-  const [columnFilters, setColumnFilters] = useState([]);
-  const [columnVisibility, setColumnVisibility] = useState({});
-  const [rowSelection, setRowSelection] = useState({});
+  const [sorting, setSorting] = useState([])
+  const [columnFilters, setColumnFilters] = useState([])
+  const [columnVisibility, setColumnVisibility] = useState({})
+  const [rowSelection, setRowSelection] = useState({})
 
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 4,
-  });
+  })
 
   const table = useReactTable({
     data,
@@ -280,20 +276,20 @@ export function DataTableDemo() {
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
     onPaginationChange: setPagination,
-  });
+  })
 
   return (
     <div className='w-full border border-gray-300 rounded-lg mt-6 py-6'>
       <div className='flex items-center pb-6 mx-6'>
         <div>
-          <h2 className='text-lg geist-600'>Projects</h2>
+          <h2 className='text-lg'>Projects</h2>
           <Status
             className='text-xs border-0'
             status='online'
             variant='outline'
           >
             <StatusIndicator />
-            <StatusLabel className='geist-400'>30 done this month</StatusLabel>
+            <StatusLabel>30 done this month</StatusLabel>
           </Status>
         </div>
 
@@ -333,7 +329,7 @@ export function DataTableDemo() {
                   <TableHead
                     key={header.id}
                     className={cn(
-                      "uppercase text-xs text-gray-500 geist-400",
+                      "uppercase text-xs text-gray-500",
                       ["budget", "completion", "team"].includes(
                         header.column.id
                       ) && "text-center"
@@ -407,5 +403,5 @@ export function DataTableDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }

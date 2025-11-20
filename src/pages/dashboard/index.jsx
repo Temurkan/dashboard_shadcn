@@ -1,13 +1,13 @@
-import CardOrder from "@/components/card-order.jsx";
-import { ChartBarDefault } from "@/components/chart-bar.jsx";
-import { ChartBarMultiple } from "@/components/chart-barto.jsx";
-import { ChartLineMultiple } from "@/components/chart-line.jsx";
-import { ChartPieDonut } from "@/components/chart-pie.jsx";
-import { ChartAreaAxes } from "@/components/chartinter.jsx";
-import { DataTableDemo } from "@/components/datatable.jsx";
-import { Button } from "@/components/ui/button.jsx";
+import CardOrder from "@/components/card-order.jsx"
+import { ChartBarDefault } from "@/components/chart-bar.jsx"
+import { ChartBarMultiple } from "@/components/chart-barto.jsx"
+import { ChartLineMultiple } from "@/components/chart-line.jsx"
+import { ChartPieDonut } from "@/components/chart-pie.jsx"
+import { ChartAreaAxes } from "@/components/chartinter.jsx"
+import { DataTableDemo } from "@/components/datatable.jsx"
+import { Button } from "@/components/ui/button.jsx"
 
-import React from "react";
+import React from "react"
 
 const chartConfig = [
   {
@@ -55,7 +55,7 @@ const chartConfig = [
     ],
     status: "just updated",
   },
-];
+]
 
 export default function Dashboard() {
   return (
@@ -67,13 +67,15 @@ export default function Dashboard() {
           className='w-full h-full object-cover'
         />
         <div className='absolute inset-0 p-8 text-white'>
-          <h2 className=' text-3xl geist-600'>Build Amazing Teams</h2>
-          <p className='text-lg geist-400 max-w-[525px] mt-4'>
+          <h2 className=' text-3xl'>Build Amazing Teams</h2>
+          <p className='text-lg max-w-[525px] mt-4'>
             Connect with diverse talent and create inclusive workspaces that
             drive innovation. Discover how our platform helps you build stronger
             teams.
           </p>
-          <Button className={"mt-8"}>Get Started</Button>
+          <Button variant='gradient' className={"mt-8"}>
+            Get Started
+          </Button>
         </div>
       </div>
       <div className='flex justify-between mt-6 gap-6 items-stretch'>
@@ -99,5 +101,5 @@ export default function Dashboard() {
         <ChartBarMultiple />
       </div>
     </main>
-  );
+  )
 }

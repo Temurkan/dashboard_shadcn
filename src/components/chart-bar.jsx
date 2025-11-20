@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
+import React, { useState } from "react"
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
 import {
   Card,
@@ -8,19 +8,19 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/ui/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@/components/ui/chart"
 import {
   Status,
   StatusIndicator,
   StatusLabel,
-} from "@/components/ui/shadcn-io/status/index.jsx";
+} from "@/components/ui/shadcn-io/status/index.jsx"
 
-export const description = "A bar chart";
+export const description = "A bar chart"
 
 const chartData = [
   { week: "M", views: 186 },
@@ -30,7 +30,7 @@ const chartData = [
   { week: "F", views: 209 },
   { week: "S", views: 214 },
   { week: "S", views: 300 },
-];
+]
 
 const GLOBAL_CHART_CONFIG = {
   views: {
@@ -38,12 +38,12 @@ const GLOBAL_CHART_CONFIG = {
     color: "var(--chart-6)",
     hoverColor: "rgba(59, 130, 246, 1)",
   },
-};
+}
 
 export function ChartBarDefault({ title, description, data, config, status }) {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null)
 
-  const finalChartConfig = config || GLOBAL_CHART_CONFIG;
+  const finalChartConfig = config || GLOBAL_CHART_CONFIG
 
   return (
     <Card className='h-full flex flex-col'>
@@ -73,11 +73,11 @@ export function ChartBarDefault({ title, description, data, config, status }) {
               onMouseEnter={(_, index) => setActiveIndex(index)}
               onMouseLeave={() => setActiveIndex(null)}
               shape={(props) => {
-                const { x, y, width, height, index } = props;
-                const isActive = index === activeIndex;
+                const { x, y, width, height, index } = props
+                const isActive = index === activeIndex
 
-                const defaultColor = "var(--color-views)";
-                const hoverColor = finalChartConfig.views?.hoverColor;
+                const defaultColor = "var(--color-views)"
+                const hoverColor = finalChartConfig.views?.hoverColor
 
                 return (
                   <rect
@@ -89,18 +89,20 @@ export function ChartBarDefault({ title, description, data, config, status }) {
                     ry={2}
                     fill={isActive ? hoverColor : defaultColor}
                   />
-                );
+                )
               }}
             />
           </BarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className='flex-col items-start gap-2 text-sm mt-auto'>
+      <CardFooter className='flex-col items-start gap-2 mt-auto'>
         <Status className='text-xs border-0' status='online' variant='outline'>
           <StatusIndicator />
-          <StatusLabel className='geist-400'>{status || "status"}</StatusLabel>
+          <StatusLabel className='font-inter font-normal'>
+            {status || "status"}
+          </StatusLabel>
         </Status>
       </CardFooter>
     </Card>
-  );
+  )
 }

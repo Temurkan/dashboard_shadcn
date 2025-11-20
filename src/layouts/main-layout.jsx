@@ -1,7 +1,7 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import Sidebar from "@/components/sidebar.jsx";
-import Footer from "@/components/footer.jsx";
+import React from "react"
+import { Outlet } from "react-router-dom"
+import Sidebar from "@/components/shared/sidebar.jsx"
+import Footer from "@/components/shared/footer.jsx"
 
 export default function MainLayout() {
   return (
@@ -12,5 +12,5 @@ export default function MainLayout() {
         <Footer />
       </div>
     </div>
-  );
+  )
 }
