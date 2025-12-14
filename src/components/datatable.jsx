@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import React, { useState } from "react"
+import React, { useState } from 'react'
 import {
   flexRender,
   getCoreRowModel,
@@ -8,26 +8,17 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
-import {
-  ChevronDown,
-  Filter,
-  FilterIcon,
-  FilterX,
-  FilterXIcon,
-  Settings,
-  SlidersVertical,
-} from "lucide-react"
+} from '@tanstack/react-table'
+import { SlidersVertical } from 'lucide-react'
 
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
+} from '@/components/ui/dropdown-menu'
 import {
   Table,
   TableBody,
@@ -35,130 +26,130 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar.jsx"
-import { Progress } from "@/components/ui/progress.jsx"
+} from '@/components/ui/table'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar.jsx'
+import { Progress } from '@/components/ui/progress.jsx'
 import {
   Status,
   StatusIndicator,
   StatusLabel,
-} from "@/components/ui/shadcn-io/status/index.jsx"
-import { cn } from "@/lib/utils.js"
+} from '@/components/ui/shadcn-io/status/index.jsx'
+import { cn } from '@/lib/utils.js'
 
 // ==== ДАННЫЕ ====
 
 const data = [
   {
-    id: "m5gr84i9",
+    id: 'm5gr84i9',
     amount: 316,
-    companies: "Material Figma Version",
-    companiesLogos: "/logos/figma.svg",
+    companies: 'Material Figma Version',
+    companiesLogos: '/logos/figma.svg',
     members: [
-      "/avatars/ivanna.svg",
-      "/avatars/alex.svg",
-      "/avatars/peter.svg",
-      "/avatars/emma.svg",
+      '/avatars/ivanna.svg',
+      '/avatars/alex.svg',
+      '/avatars/peter.svg',
+      '/avatars/emma.svg',
     ],
-    budget: "$14,000",
-    team: "Design",
-    completion: "50%",
+    budget: '$14,000',
+    team: 'Design',
+    completion: '50%',
   },
   {
-    id: "3u1reuv4",
+    id: '3u1reuv4',
     amount: 242,
-    companies: "Launch Mobile App",
-    companiesLogos: "/logos/github.svg",
+    companies: 'Launch Mobile App',
+    companiesLogos: '/logos/github.svg',
     members: [
-      "/avatars/ivanna.svg",
-      "/avatars/alex.svg",
-      "/avatars/john.svg",
-      "/avatars/peter.svg",
-      "/avatars/emma.svg",
+      '/avatars/ivanna.svg',
+      '/avatars/alex.svg',
+      '/avatars/john.svg',
+      '/avatars/peter.svg',
+      '/avatars/emma.svg',
     ],
-    budget: "$20,000",
-    team: "Back-end",
-    completion: "50%",
+    budget: '$20,000',
+    team: 'Back-end',
+    completion: '50%',
   },
   {
-    id: "derv1ws0",
+    id: 'derv1ws0',
     amount: 837,
-    companies: "Fix Platform Errors",
-    companiesLogos: "/logos/discord.svg",
-    members: ["/avatars/ivanna.svg", "/avatars/alex.svg", "/avatars/peter.svg"],
-    budget: "$5,000",
-    team: "Design",
-    completion: "50%",
+    companies: 'Fix Platform Errors',
+    companiesLogos: '/logos/discord.svg',
+    members: ['/avatars/ivanna.svg', '/avatars/alex.svg', '/avatars/peter.svg'],
+    budget: '$5,000',
+    team: 'Design',
+    completion: '50%',
   },
   {
-    id: "5kma53ae",
+    id: '5kma53ae',
     amount: 874,
-    companies: "New Pricing Page",
-    companiesLogos: "/logos/signal.svg",
+    companies: 'New Pricing Page',
+    companiesLogos: '/logos/signal.svg',
     members: [
-      "/avatars/alex.svg",
-      "/avatars/john.svg",
-      "/avatars/peter.svg",
-      "/avatars/emma.svg",
+      '/avatars/alex.svg',
+      '/avatars/john.svg',
+      '/avatars/peter.svg',
+      '/avatars/emma.svg',
     ],
-    budget: "$2,000",
-    team: "Marketing",
-    completion: "50%",
+    budget: '$2,000',
+    team: 'Marketing',
+    completion: '50%',
   },
   {
-    id: "mpa01qoa",
+    id: 'mpa01qoa',
     amount: 837,
-    companies: "Accessories Store",
-    companiesLogos: "/logos/apple.svg",
+    companies: 'Accessories Store',
+    companiesLogos: '/logos/apple.svg',
     members: [
-      "/avatars/ivanna.svg",
-      "/avatars/alex.svg",
-      "/avatars/peter.svg",
-      "/avatars/emma.svg",
+      '/avatars/ivanna.svg',
+      '/avatars/alex.svg',
+      '/avatars/peter.svg',
+      '/avatars/emma.svg',
     ],
-    budget: "$5,000",
-    team: "Front-end",
-    completion: "50%",
+    budget: '$5,000',
+    team: 'Front-end',
+    completion: '50%',
   },
   {
-    id: "nmksow0m",
+    id: 'nmksow0m',
     amount: 837,
-    companies: "Images Store",
-    companiesLogos: "/logos/pinterest.svg",
+    companies: 'Images Store',
+    companiesLogos: '/logos/pinterest.svg',
     members: [
-      "/avatars/ivanna.svg",
-      "/avatars/john.svg",
-      "/avatars/alex.svg",
-      "/avatars/peter.svg",
+      '/avatars/ivanna.svg',
+      '/avatars/john.svg',
+      '/avatars/alex.svg',
+      '/avatars/peter.svg',
     ],
-    budget: "$5,000",
-    team: "Design",
-    completion: "50%",
+    budget: '$5,000',
+    team: 'Design',
+    completion: '50%',
   },
   {
-    id: "dv1map3c",
+    id: 'dv1map3c',
     amount: 837,
-    companies: "Social Chat",
-    companiesLogos: "/logos/telegram.svg",
+    companies: 'Social Chat',
+    companiesLogos: '/logos/telegram.svg',
     members: [
-      "/avatars/ivanna.svg",
-      "/avatars/alex.svg",
-      "/avatars/john.svg",
-      "/avatars/peter.svg",
-      "/avatars/emma.svg",
+      '/avatars/ivanna.svg',
+      '/avatars/alex.svg',
+      '/avatars/john.svg',
+      '/avatars/peter.svg',
+      '/avatars/emma.svg',
     ],
-    budget: "$5,000",
-    team: "Mobile app",
-    completion: "50%",
+    budget: '$5,000',
+    team: 'Mobile app',
+    completion: '50%',
   },
   {
-    id: "df3pf3fv",
+    id: 'df3pf3fv',
     amount: 837,
-    companies: "Social Marketing",
-    companiesLogos: "/logos/facebook.svg",
-    members: ["/avatars/ivanna.svg", "/avatars/alex.svg", "/avatars/peter.svg"],
-    budget: "$5,000",
-    team: "Marketing",
-    completion: "50%",
+    companies: 'Social Marketing',
+    companiesLogos: '/logos/facebook.svg',
+    members: ['/avatars/ivanna.svg', '/avatars/alex.svg', '/avatars/peter.svg'],
+    budget: '$5,000',
+    team: 'Marketing',
+    completion: '50%',
   },
 ]
 
@@ -166,7 +157,7 @@ const data = [
 
 export const columns = [
   {
-    id: "select",
+    id: 'select',
 
     cell: ({ row }) => (
       <Checkbox
@@ -179,11 +170,11 @@ export const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: "companies",
-    header: "Companies",
+    accessorKey: 'companies',
+    header: 'Companies',
     cell: ({ row }) => {
       const logo = row.original.companiesLogos
-      const name = row.getValue("companies")
+      const name = row.getValue('companies')
 
       return (
         <div className='flex items-center gap-2 text-sm font-medium  w-[200px]'>
@@ -195,10 +186,10 @@ export const columns = [
   },
 
   {
-    accessorKey: "members",
-    header: "Members",
+    accessorKey: 'members',
+    header: 'Members',
     cell: ({ row }) => {
-      const members = row.getValue("members") || []
+      const members = row.getValue('members') || []
       return (
         <div className='flex justify-between overflow-hidden gap-0 -space-x-20 w-[87px]'>
           {members.map((src, i) => (
@@ -214,29 +205,29 @@ export const columns = [
     },
   },
   {
-    accessorKey: "budget",
-    header: "Budget",
+    accessorKey: 'budget',
+    header: 'Budget',
     cell: ({ row }) => (
       <div className='capitalize text-sm text-gray-500 roboto-400 w-10'>
-        {row.getValue("budget")}
+        {row.getValue('budget')}
       </div>
     ),
   },
   {
-    accessorKey: "team",
-    header: "Team",
+    accessorKey: 'team',
+    header: 'Team',
     cell: ({ row }) => (
       <div className='capitalize w-fit block  text-xs text-gray-950 px-2 py-1 border border-gray-200 rounded-sm'>
-        {row.getValue("team")}
+        {row.getValue('team')}
       </div>
     ),
   },
   {
-    accessorKey: "completion",
-    header: "Completion",
+    accessorKey: 'completion',
+    header: 'Completion',
     cell: ({ row }) => (
       <div className='flex items-center gap-2 text-gray-500 text-xs w-[200px]'>
-        {row.getValue("completion")}
+        {row.getValue('completion')}
         <Progress value={50} />
       </div>
     ),
@@ -329,10 +320,10 @@ export function DataTableDemo() {
                   <TableHead
                     key={header.id}
                     className={cn(
-                      "uppercase text-xs text-gray-500",
-                      ["budget", "completion", "team"].includes(
+                      'uppercase text-xs text-gray-500',
+                      ['budget', 'completion', 'team'].includes(
                         header.column.id
-                      ) && "text-center"
+                      ) && 'text-center'
                     )}
                   >
                     {header.isPlaceholder
@@ -352,7 +343,7 @@ export function DataTableDemo() {
               table.getPaginationRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
+                  data-state={row.getIsSelected() && 'selected'}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
@@ -380,7 +371,7 @@ export function DataTableDemo() {
 
       <div className='flex items-center justify-end mx-6'>
         <div className='text-muted-foreground flex-1 text-sm'>
-          Page {table.getState().pagination.pageIndex + 1} of{" "}
+          Page {table.getState().pagination.pageIndex + 1} of{' '}
           {table.getPageCount()}
         </div>
         <div className='space-x-2'>

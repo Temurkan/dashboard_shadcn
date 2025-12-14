@@ -1,5 +1,5 @@
-import * as React from "react";
-import { cn } from "@/lib/utils";
+import * as React from 'react'
+import { cn } from '@/lib/utils'
 
 function Table({ className, children, ...props }) {
   return (
@@ -10,7 +10,7 @@ function Table({ className, children, ...props }) {
       <table
         data-slot='table'
         className={cn(
-          "w-full text-sm border-collapse border-spacing-0",
+          'w-full text-sm border-collapse border-spacing-0',
           className
         )}
         {...props}
@@ -18,27 +18,27 @@ function Table({ className, children, ...props }) {
         {children}
       </table>
     </div>
-  );
+  )
 }
 
 function TableHeader({ className, ...props }) {
   return (
     <thead
       data-slot='table-header'
-      className={cn("[&_tr]:border-b border-border/50", className)}
+      className={cn('[&_tr]:border-b border-border/50', className)}
       {...props}
     />
-  );
+  )
 }
 
 function TableBody({ className, ...props }) {
   return (
     <tbody
       data-slot='table-body'
-      className={cn("[&_tr:last-child]:border-0", className)}
+      className={cn('[&_tr:last-child]:border-0', className)}
       {...props}
     />
-  );
+  )
 }
 
 function TableRow({ className, ...props }) {
@@ -46,12 +46,12 @@ function TableRow({ className, ...props }) {
     <tr
       data-slot='table-row'
       className={cn(
-        "border-b border-border/30 hover:bg-muted/30 transition-colors",
+        'border-b border-border/30 hover:bg-muted/30 transition-colors',
         className
       )}
       {...props}
     />
-  );
+  )
 }
 
 function TableHead({ className, ...props }) {
@@ -60,14 +60,14 @@ function TableHead({ className, ...props }) {
       data-slot='table-head'
       className={cn(
         // выравнивание и плотность
-        "px-2 py-3 text-left align-middle text-xs font-medium uppercase text-gray-500 whitespace-nowrap",
-        "[&:has([role=checkbox])]:pr-0",
-        "[*:[role=checkbox]]:translate-y-0.5",
+        'px-2 py-3 text-left align-middle text-xs font-medium uppercase text-gray-500 whitespace-nowrap',
+        '[&:has([role=checkbox])]:pr-0',
+        '[*:[role=checkbox]]:translate-y-0.5',
         className
       )}
       {...props}
     />
-  );
+  )
 }
 
 function TableCell({ className, ...props }) {
@@ -76,24 +76,24 @@ function TableCell({ className, ...props }) {
       data-slot='table-cell'
       className={cn(
         // компактно, без лишних отступов
-        "px-2 py-3  whitespace-nowrap",
-        "[&:has([role=checkbox])]:pr-0",
-        "[*:[role=checkbox]]:translate-y-0.5",
+        'px-2 py-3  whitespace-nowrap',
+        '[&:has([role=checkbox])]:pr-0',
+        '[*:[role=checkbox]]:translate-y-0.5',
         className
       )}
       {...props}
     />
-  );
+  )
 }
 
 function TableCaption({ className, ...props }) {
   return (
     <caption
       data-slot='table-caption'
-      className={cn("text-muted-foreground mt-4 text-sm", className)}
+      className={cn('text-muted-foreground mt-4 text-sm', className)}
       {...props}
     />
-  );
+  )
 }
 
 export {
@@ -104,4 +104,4 @@ export {
   TableHead,
   TableCell,
   TableCaption,
-};
+}

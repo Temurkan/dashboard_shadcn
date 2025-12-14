@@ -1,31 +1,29 @@
-import { createBrowserRouter } from "react-router-dom"
-import Dashboard from "@/pages/dashboard"
-import Profile from "@/pages/profile"
-import MainLayout from "@/layouts/main-layout"
-import Tables from "@/pages/tables"
-import SignIn from "@/pages/auth/signin"
-import SignUp from "@/pages/auth/signup"
-import Subscriptions from "@/pages/subscriptions"
-import Notifications from "@/pages/notifications"
-import Documentation from "@/pages/documentation"
+import { createBrowserRouter } from 'react-router-dom'
+import Dashboard from '@/pages/dashboard'
+import Profile from '@/pages/profile'
+import MainLayout from '@/layouts/main-layout'
+import Tables from '@/pages/tables'
+import SignIn from '@/pages/auth/signin'
+import SignUp from '@/pages/auth/signup'
+import Subscriptions from '@/pages/subscriptions'
+import Notifications from '@/pages/notifications'
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <MainLayout />,
     children: [
       { index: true, element: <Dashboard /> },
-      { path: "profile", element: <Profile /> },
-      { path: "tables", element: <Tables /> },
-      { path: "notifications", element: <Notifications /> },
-      { path: "subscriptions", element: <Subscriptions /> },
-      { path: "documentation", element: <Documentation /> },
+      { path: 'profile', element: <Profile /> },
+      { path: 'tables', element: <Tables /> },
+      { path: 'notifications', element: <Notifications /> },
+      { path: 'subscriptions', element: <Subscriptions /> },
     ],
   },
   {
-    path: "/",
+    path: '/',
     children: [
-      { path: "signin", element: <SignIn /> },
-      { path: "signup", element: <SignUp /> },
+      { path: 'signin', element: <SignIn /> },
+      { path: 'signup', element: <SignUp /> },
     ],
   },
 ])

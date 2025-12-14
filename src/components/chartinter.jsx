@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import { TrendingUp } from "lucide-react";
-import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
+import { TrendingUp } from "lucide-react"
+import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import {
   Card,
@@ -10,43 +10,51 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/ui/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@/components/ui/chart"
+import { Button } from "@/components/ui/button.jsx"
 
-export const description = "An area chart with axes";
+export const description = "An area chart with axes"
 
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-];
+  { month: "January", expenses: 186, sales: 80 },
+  { month: "February", expenses: 305, sales: 200 },
+  { month: "March", expenses: 237, sales: 120 },
+  { month: "April", expenses: 73, sales: 190 },
+  { month: "May", expenses: 209, sales: 130 },
+  { month: "June", expenses: 800, sales: 900 },
+  { month: "July", expenses: 800, sales: 600 },
+  { month: "August", expenses: 305, sales: 200 },
+  { month: "September", expenses: 237, sales: 120 },
+  { month: "October", expenses: 73, sales: 190 },
+  { month: "November", expenses: 209, sales: 130 },
+  { month: "December", expenses: 214, sales: 140 },
+]
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "var(--chart-1)",
+  expenses: {
+    label: "Expenses",
+    color: "var(--chart-6)",
   },
-  mobile: {
-    label: "Mobile",
+  sales: {
+    label: "Sales",
     color: "var(--chart-2)",
   },
-};
+}
 
 export function ChartAreaAxes() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Area Chart - Axes</CardTitle>
-        <CardDescription>
-          Showing total visitors for the last 6 months
-        </CardDescription>
+      <CardHeader className='flex justify-between'>
+        <div>
+          <CardTitle>Sales vs Expenses</CardTitle>
+          <CardDescription>Monthly revenue vs expenses</CardDescription>
+        </div>
+        <Button variant='outline'>View Report</Button>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -74,36 +82,24 @@ export function ChartAreaAxes() {
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <Area
-              dataKey='mobile'
+              dataKey='sales'
               type='natural'
-              fill='var(--color-mobile)'
+              fill='var(--color-sales)'
               fillOpacity={0.4}
-              stroke='var(--color-mobile)'
+              stroke='var(--color-sales)'
               stackId='a'
             />
             <Area
-              dataKey='desktop'
+              dataKey='expenses'
               type='natural'
-              fill='var(--color-desktop)'
+              fill='var(--color-expenses)'
               fillOpacity={0.4}
-              stroke='var(--color-desktop)'
+              stroke='var(--color-expenses)'
               stackId='a'
             />
           </AreaChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter>
-        <div className='flex w-full items-start gap-2 text-sm'>
-          <div className='grid gap-2'>
-            <div className='flex items-center gap-2 leading-none font-medium'>
-              Trending up by 5.2% this month <TrendingUp className='h-4 w-4' />
-            </div>
-            <div className='text-muted-foreground flex items-center gap-2 leading-none'>
-              January - June 2024
-            </div>
-          </div>
-        </div>
-      </CardFooter>
     </Card>
-  );
+  )
 }
